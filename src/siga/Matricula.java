@@ -24,14 +24,15 @@ public class Matricula {
     private Aluno aluno;
     private double valorBase;
     private Desconto desconto;   // "NENHUM", "BOLSISTA", "CONVENIO", "FUNCIONARIO"...
+    private MatriculaRepositorio repositorio;
 
     // Violação do DIP: dependência direta da classe concreta.
-    private GravadorMySQL gravador = new GravadorMySQL();
 
-    public Matricula(Aluno aluno, double valorBase, Desconto desconto) {
+    public Matricula(Aluno aluno, double valorBase, Desconto desconto, MatriculaRepositorio repositorio) {
         this.aluno = aluno;
         this.valorBase = valorBase;
         this.desconto = desconto;
+        this.repositorio = repositorio;
     }
 
     public double calcularMensalidade() {
@@ -40,7 +41,7 @@ public class Matricula {
     
     // Persiste a matrícula usando a implementação concreta (acoplamento indevido).
     public void salvar() {
-        gravador.gravar("Matrícula de " + aluno.getNome()
+        repositorio.gravar("Matrícula de " + aluno.getNome()
                 + " - mensalidade: " + calcularMensalidade());
     }
 }
