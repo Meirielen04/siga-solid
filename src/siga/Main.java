@@ -32,10 +32,13 @@ public class Main {
         System.out.println();
 
         // PROBLEMA 2 (OCP): o cálculo usa condicionais que crescem a cada desconto.
-        Matricula m1 = new Matricula(alunos.get(0), 1000.0, "BOLSISTA");
-        Matricula m2 = new Matricula(alunos.get(1), 1000.0, "NENHUM");
+        Desconto descontoBolsista = new DescontoBolsista();
+        Matricula m1 = new Matricula(alunos.get(0), 1000.0, descontoBolsista);
+        Desconto semDesconto = new SemDesconto();
+        Matricula m2 = new Matricula(alunos.get(1), 1000.0, semDesconto);
         System.out.println("Mensalidade (bolsista): " + m1.calcularMensalidade());
         System.out.println("Mensalidade (sem desconto): " + m2.calcularMensalidade());
+
 
         // PROBLEMA 3 (DIP): Matricula depende diretamente de GravadorMySQL.
         m1.salvar();
