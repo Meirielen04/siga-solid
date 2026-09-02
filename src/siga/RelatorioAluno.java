@@ -33,17 +33,7 @@ public class RelatorioAluno {
         return sb.toString();
     }
 
-    // Responsabilidade (b): PERSISTÊNCIA (gravar em arquivo)
-    public void salvarEmArquivo(String conteudo, String caminho) {
-        // Simulação de gravação em disco (a implementação real não importa para a atividade).
-        System.out.println("[disco] Gravando relatório em: " + caminho);
-        System.out.println(conteudo);
-    }
+   
 
-    // Responsabilidade (c): COMUNICAÇÃO (enviar por e-mail)
-    public void enviarPorEmail(String conteudo, String destinatario) {
-        // Simulação de envio de e-mail.
-        System.out.println("[email] Enviando relatório para: " + destinatario);
-        System.out.println(conteudo);
-    }
+    
 }

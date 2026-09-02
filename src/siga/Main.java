@@ -24,9 +24,11 @@ public class Main {
         // PROBLEMA 1 (SRP): uma única classe formata, grava E envia o relatório.
         RelatorioAluno relatorio = new RelatorioAluno();
         String conteudo = relatorio.formatar(alunos);
-        relatorio.salvarEmArquivo(conteudo, "relatorios/alunos.txt");
-        relatorio.enviarPorEmail(conteudo, "coordenacao@exemplo.edu");
-
+        RelatorioRepositorio repositorio = new RelatorioRepositorio();
+        repositorio.salvarEmArquivo(conteudo, "relatorios/alunos.txt");
+        ServicoEmail email = new ServicoEmail();
+        email.enviarPorEmail(conteudo, "coordenacao@exemplo.edu");
+        
         System.out.println();
 
         // PROBLEMA 2 (OCP): o cálculo usa condicionais que crescem a cada desconto.
@@ -44,3 +46,4 @@ public class Main {
         System.out.println("exigiria alterá-la também. Sua tarefa é corrigir isso com SOLID.");
     }
 }
+
